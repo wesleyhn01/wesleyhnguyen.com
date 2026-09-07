@@ -78,7 +78,7 @@
 
 		<div class="project-list">
 			{#each projects as item, index (item.name)}
-				<article class="card project-card lift" use:reveal={80 + index * 60}>
+				<a class="card project-card lift" href={item.href} use:reveal={80 + index * 60}>
 					<div class="top">
 						<h3>{item.name}</h3>
 						<span class="status" class:live={item.status.toLowerCase() === 'in-progress'}>
@@ -94,13 +94,11 @@
 								<li class="chip">{tech}</li>
 							{/each}
 						</ul>
-						{#if item.href}
-							<a class="link" href={item.href}>
-								Read the writeup <span class="arrow" aria-hidden="true">→</span>
-							</a>
-						{/if}
+						<span class="link">
+							Read the writeup <span class="arrow" aria-hidden="true">→</span>
+						</span>
 					</div>
-				</article>
+				</a>
 			{/each}
 		</div>
 	</div>
@@ -257,6 +255,12 @@
 		padding: 1.5rem 1.5rem 1.35rem;
 		display: grid;
 		gap: 1rem;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.project-card:hover :global(.link) {
+		background-size: 100% 1.5px;
 	}
 
 	.project-card .top {

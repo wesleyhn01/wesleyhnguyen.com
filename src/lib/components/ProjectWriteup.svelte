@@ -40,17 +40,6 @@
 					<p>{paragraph}</p>
 				{/each}
 			</div>
-
-			{#if writeup.metrics}
-				<ul class="facts" use:reveal={120}>
-					{#each writeup.metrics as metric (metric.label)}
-						<li>
-							<span class="value grad-num">{metric.value}</span>
-							<span class="metric-label">{metric.label}</span>
-						</li>
-					{/each}
-				</ul>
-			{/if}
 		</div>
 	</section>
 
@@ -171,29 +160,6 @@
 
 	.lead {
 		max-width: 66ch;
-	}
-
-	.facts {
-		list-style: none;
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin: 2.25rem 0 0;
-		padding: 1.15rem 0 0;
-		border-top: 1px solid var(--line);
-	}
-
-	.facts .value {
-		display: block;
-		font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
-		font-weight: 600;
-		letter-spacing: -0.03em;
-		line-height: 1.15;
-	}
-
-	.facts .metric-label {
-		font-size: 0.75rem;
-		color: var(--ink-3);
 	}
 
 	.tech-list {
@@ -331,11 +297,6 @@
 	@media (max-width: 52rem) {
 		.steps {
 			grid-template-columns: minmax(0, 1fr);
-		}
-
-		.facts {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 1.15rem 1rem;
 		}
 
 		.tech-list .row {
