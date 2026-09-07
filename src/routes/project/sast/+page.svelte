@@ -3,4 +3,4 @@
 	import { writeups } from '$lib/content';
 </script>
 
-<ProjectWriteup writeup={writeups.monitor} />
+<ProjectWriteup writeup={writeups.sast} />

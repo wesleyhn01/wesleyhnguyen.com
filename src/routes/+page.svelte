@@ -81,7 +81,7 @@
 				<article class="card project-card lift" use:reveal={80 + index * 60}>
 					<div class="top">
 						<h3>{item.name}</h3>
-						<span class="status" class:live={item.status === 'In-progress'}>
+						<span class="status" class:live={item.status.toLowerCase() === 'in-progress'}>
 							{item.status}
 						</span>
 					</div>

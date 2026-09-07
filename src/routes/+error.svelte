@@ -15,7 +15,7 @@
 			<a class="btn btn-primary" href="/">
 				Back home <span class="arrow" aria-hidden="true">→</span>
 			</a>
-			<a class="btn btn-ghost" href="/project/">Current project</a>
+			<a class="btn btn-ghost" href="/#projects">Projects</a>
 		</div>
 	</div>
 </section>

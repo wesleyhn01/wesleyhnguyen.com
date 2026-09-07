@@ -3,10 +3,6 @@
 
 	const year = new Date().getFullYear();
 
-	/**
-	 * A mailto link does nothing for anyone without a desktop mail client, so the
-	 * address can also be copied straight to the clipboard.
-	 */
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
 
@@ -36,9 +32,9 @@
 		</div>
 
 		<ul class="links">
-			<li><a href={site.links.github} target="_blank" rel="noreferrer noopener">GitHub</a></li>
 			<li><a href={site.links.linkedin} target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
-			<li><a href="/project/">Current Project</a></li>
+			<li><a href={site.links.github} target="_blank" rel="noreferrer noopener">GitHub</a></li>
+			<li><a href="/#projects">Projects</a></li>
 		</ul>
 
 		<p class="colophon">© {year} {site.name} · Built with SvelteKit</p>

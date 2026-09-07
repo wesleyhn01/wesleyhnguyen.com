@@ -4,16 +4,17 @@
 
 	const pages = [
 		{ href: '/', label: 'Home', short: 'Home' },
-		{ href: '/project/', label: 'Current Project', short: 'Project' }
+		{ href: '/#projects', label: 'Projects', short: 'Projects' }
 	];
 
 	const current = $derived(page.url.pathname);
 
 	function isActive(href: string) {
-		return href === '/' ? current === '/' : current.startsWith(href);
+		if (href === '/') return current === '/';
+		if (href === '/#projects') return current.startsWith('/project');
+		return current.startsWith(href);
 	}
 
-	/** The bar picks up a soft shadow once the page has moved. */
 	let scrolled = $state(false);
 
 	$effect(() => {
@@ -46,6 +47,15 @@
 
 		<ul class="socials">
 			<li>
+				<a href={site.links.linkedin} target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+					<svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+						<path
+							d="M13.63 0H2.36C1.06 0 0 1.03 0 2.3v11.4C0 14.97 1.06 16 2.36 16h11.27c1.31 0 2.37-1.03 2.37-2.3V2.3C16 1.03 14.94 0 13.63 0ZM4.75 13.66H2.37V6.03h2.38v7.63ZM3.56 4.98a1.38 1.38 0 1 1 0-2.75 1.38 1.38 0 0 1 0 2.75Zm10.1 8.68h-2.37V9.95c0-.88-.02-2.02-1.23-2.02-1.24 0-1.43.96-1.43 1.96v3.77H6.26V6.03h2.28v1.04h.03c.32-.6 1.09-1.23 2.25-1.23 2.4 0 2.84 1.58 2.84 3.63v4.19Z"
+						/>
+					</svg>
+				</a>
+			</li>
+			<li>
 				<a href={site.links.github} target="_blank" rel="noreferrer noopener" aria-label="GitHub">
 					<svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
 						<path
@@ -59,15 +69,6 @@
 					<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4">
 						<rect x="1.2" y="3" width="13.6" height="10" rx="2" />
 						<path d="M1.8 4.4 8 8.8l6.2-4.4" />
-					</svg>
-				</a>
-			</li>
-			<li>
-				<a href={site.links.linkedin} target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
-					<svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
-						<path
-							d="M3.6 5.4H1.1V14h2.5V5.4ZM2.35 1.6a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9ZM14.9 9.1c0-2.36-1.26-3.46-2.95-3.46-1.36 0-1.97.75-2.3 1.28V5.4H7.15c.03.7 0 8.6 0 8.6h2.5V9.2c0-.22.02-.44.08-.6.18-.44.58-.9 1.26-.9.89 0 1.25.68 1.25 1.68V14h2.5V9.1Z"
-						/>
 					</svg>
 				</a>
 			</li>
