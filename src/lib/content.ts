@@ -1,6 +1,5 @@
 export const site = {
 	name: 'Wesley Nguyen',
-	role: 'Software Developer @ CGI Federal',
 	thesis: 'Continuously exploring and integrating new technologies and innovative solutions.',
 
 	bio: [
@@ -14,9 +13,9 @@ export const site = {
 		{ label: 'Based in', value: 'Fairfax, VA' }
 	],
 
-	learning: 'Standing up a home server and running a local LLM on it.',
+	learning: 'Developing a homelab for secure VPN connectivity.',
 
-	goal: 'Revamp the contract monitor with new a structure and additional features.',
+	goal: 'Transform the Contract Monitor from a script into a scalable application.',
 
 	funFact: {
 		lead: "When I'm not working or learning something new, I'm practicing",

@@ -1,28 +1,25 @@
-# Personal site
+# wesleyhnguyen.com
 
-A two-page portfolio site built with SvelteKit and prerendered to static files.
+Personal portfolio site built with SvelteKit and prerendered to static files.
 
-- `/` for the landing page, short bio, now (learning and goal), current project, and fun fact
-- `/project/` for a quick read on the Federal Contract Opportunity Monitor
+- `/` — bio, current focus, and project index
+- `/project/` — Federal Contract Opportunity Monitor
+- `/project/sast/` — SAST Vulnerability Management Platform
+- `/project/reverse-split/` — Reverse Split Arbitrage Bot
 
-## Editing your content
+## Structure
 
-Everything you would want to change lives in [`src/lib/content.ts`](src/lib/content.ts). Anything
-marked `PLACEHOLDER` is filler: the "currently learning" line, the goal line, and the repository URL
-under `project.links`. Replace those strings and both pages update. Name, role, bio, fun fact, and
-social links are already filled in, and the project section is already written.
+All site copy lives in `src/lib/content.ts`: the home page content, the project cards, and the
+project writeups. Each writeup shares one shape (overview, technologies, how it works, sources)
+rendered by `src/lib/components/ProjectWriteup.svelte`, so adding a project page means adding an
+entry to `writeups` and a thin route that passes it in.
 
-Browser tab titles come from `site.seo.homeTab` and `site.seo.projectTab`. The longer `site.seo.title`
-is used for search results and link previews instead.
-
-## Running it
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
-
-Then open http://localhost:5173.
 
 ```bash
 npm run build     # Vercel output in .vercel/output/
@@ -30,42 +27,28 @@ npm run preview   # serve the built output
 npm run check     # svelte-check
 ```
 
-## Deploying
+## Deployment
 
-The site deploys to Vercel with `@sveltejs/adapter-vercel`. Every route is prerendered, so Vercel
-serves plain HTML; the only serverless function is the catch-all that renders the 404 page.
+Deploys to Vercel with `@sveltejs/adapter-vercel`. Every route is prerendered, so Vercel serves
+plain HTML; the only serverless function is the catch-all rendering the 404 page.
 
-The runtime is pinned to `nodejs22.x` in `vite.config.ts`. That is deliberate: the adapter only
-auto-detects Node 20, 22, and 24, and it fails the build on anything newer. Bump the pin when Vercel
-adds a newer runtime, not before.
+The runtime is pinned to `nodejs22.x` in `vite.config.ts` because the adapter only auto-detects
+Node 20, 22, and 24, and fails the build on anything newer.
 
-### Hosting somewhere else
-
-`@sveltejs/adapter-static` is still installed. Swap the import in `vite.config.ts`:
+To host elsewhere, swap in `@sveltejs/adapter-static` (already installed) in `vite.config.ts`:
 
 ```ts
 import adapter from '@sveltejs/adapter-static';
-// ...
+
 adapter: adapter({ fallback: '404.html' });
 ```
 
-That writes a plain `build/` folder for GitHub Pages, Netlify, Cloudflare Pages, or any static host.
-Note that `adapter-static` refuses to run on Vercel with any options set, so the two configurations
-are mutually exclusive. For GitHub Pages from a project repo (`user.github.io/repo`), also set the
-base path:
+That writes a plain `build/` folder for GitHub Pages, Netlify, Cloudflare Pages, or any static
+host. The two adapters are mutually exclusive on Vercel.
 
-```ts
-kit: {
-	paths: { base: '/repo-name' }
-}
-```
+## Design
 
-## Design notes
-
-- Palette: white through gray, with one teal to indigo gradient used for accents such as buttons,
-  key numbers, and the wash behind each hero. Numbers use a tighter blue to indigo ramp so short
-  strings still read as a gradient.
-- Type: Geist for body and headings, Geist Mono for labels and data. Both are self-hosted through
-  `@fontsource`, so there are no external font requests.
-- `src/lib/components/RunStrip.svelte` draws one day of the monitor's 24 hourly runs. It animates
-  once on load and renders complete for anyone with reduced motion enabled.
+- White-through-gray palette with one teal-to-indigo gradient for accents
+- Geist and Geist Mono, self-hosted through `@fontsource`, so no external font requests
+- Scroll-reveal animations that respect `prefers-reduced-motion` and never hide content when
+  JavaScript is off

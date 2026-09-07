@@ -102,7 +102,7 @@
 	<section class="outro">
 		<div class="shell">
 			<p class="outro-line" use:reveal>
-				Happy to walk through the code, or the parts of it that didn't work.
+				Curious about the details? I'm happy to walk through any of it.
 			</p>
 			<div class="actions" use:reveal={80}>
 				<a class="btn btn-primary" href="mailto:{site.links.email}">
