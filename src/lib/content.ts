@@ -55,6 +55,36 @@ export const site = {
 	}
 };
 
+/**
+ * The cards in the Projects section on the home page.
+ * `status` is either "Writeup" or "In-progress". A card with an `href`
+ * links out to its writeup page.
+ */
+export const projects = [
+	{
+		name: 'SAST Vulnerability Management Platform',
+		description:
+			'A security scanning platform that unifies secrets detection, software composition analysis, and containerized CI/CD scanning, with LLM-driven triage that cut false-positive review volume 40%.',
+		stack: ['Go', 'Supabase (PostgreSQL)', 'Svelte', 'Next.js', 'TypeScript'],
+		status: 'Writeup'
+	},
+	{
+		name: 'Reverse Split Arbitrage Bot',
+		description:
+			'A pipeline that scrapes new SEC reverse-split filings, classifies each by fractional-share provision, and routes profitable round-up opportunities across 50 brokerage accounts.',
+		stack: ['Python', 'OpenAI API', 'REST APIs', 'Discord API', 'Git'],
+		status: 'Writeup'
+	},
+	{
+		name: 'Federal Contract Opportunity Monitor',
+		description:
+			'A zero-cost scheduled job that polls the federal contract feed every hour and speaks up only when a posting is genuinely new and worth bidding on.',
+		stack: ['Python', 'GitHub Actions', 'REST APIs', 'CI/CD', 'Git'],
+		status: 'In-Progress',
+		href: '/project/'
+	}
+];
+
 export const project = {
 	name: 'Federal Contract Opportunity Monitor',
 	tagline:

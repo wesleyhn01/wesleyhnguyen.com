@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site, project } from '$lib/content';
+	import { site, projects } from '$lib/content';
 	import { reveal } from '$lib/actions/reveal';
 </script>
 
@@ -13,16 +13,13 @@
 <section class="hero">
 	<div class="glow" aria-hidden="true"></div>
 	<div class="shell">
-		<p class="role rise" style="--rise-delay: 60ms">
-			<span class="dot" aria-hidden="true"></span>{site.role}
-		</p>
-		<h1 class="rise" style="--rise-delay: 140ms">{site.name}</h1>
-		<p class="thesis rise" style="--rise-delay: 220ms">{site.thesis}</p>
-		<div class="actions rise" style="--rise-delay: 300ms">
+		<h1 class="rise" style="--rise-delay: 60ms">{site.name}</h1>
+		<p class="thesis rise" style="--rise-delay: 140ms">{site.thesis}</p>
+		<div class="actions rise" style="--rise-delay: 220ms">
 			<a class="btn btn-primary" href="mailto:{site.links.email}">
 				Get in touch <span class="arrow" aria-hidden="true">→</span>
 			</a>
-			<a class="btn btn-ghost" href="/project/">See what I'm building</a>
+			<a class="btn btn-ghost" href="#projects">See what I'm building</a>
 		</div>
 	</div>
 </section>
@@ -72,38 +69,39 @@
 	</div>
 </section>
 
-<section class="project">
+<section class="projects" id="projects">
 	<div class="shell">
 		<div class="section-head" use:reveal>
-			<h2>Current Project</h2>
-			<span class="trailing">Running daily</span>
+			<h2>Projects</h2>
+			<span class="trailing">Recent and ongoing</span>
 		</div>
 
-		<div class="card project-card lift" use:reveal={80}>
-			<div class="top">
-				<h3>{project.name}</h3>
-				<p class="prose">{project.summary}</p>
-			</div>
+		<div class="project-list">
+			{#each projects as item, index (item.name)}
+				<article class="card project-card lift" use:reveal={80 + index * 60}>
+					<div class="top">
+						<h3>{item.name}</h3>
+						<span class="status" class:live={item.status === 'In-progress'}>
+							{item.status}
+						</span>
+					</div>
 
-			<ul class="metrics">
-				{#each project.metrics as metric (metric.label)}
-					<li>
-						<span class="value grad-num">{metric.value}</span>
-						<span class="metric-label">{metric.label}</span>
-					</li>
-				{/each}
-			</ul>
+					<p class="prose">{item.description}</p>
 
-			<div class="bottom">
-				<ul class="stack">
-					{#each project.stack as tech (tech)}
-						<li class="chip">{tech}</li>
-					{/each}
-				</ul>
-				<a class="link" href="/project/">
-					How it works <span class="arrow" aria-hidden="true">→</span>
-				</a>
-			</div>
+					<div class="bottom">
+						<ul class="stack">
+							{#each item.stack as tech (tech)}
+								<li class="chip">{tech}</li>
+							{/each}
+						</ul>
+						{#if item.href}
+							<a class="link" href={item.href}>
+								Read the writeup <span class="arrow" aria-hidden="true">→</span>
+							</a>
+						{/if}
+					</div>
+				</article>
+			{/each}
 		</div>
 	</div>
 </section>
@@ -145,34 +143,11 @@
 		position: relative;
 	}
 
-	.role {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.55rem;
-		font-family: var(--mono);
-		font-size: var(--label);
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--ink-2);
-		background: var(--bg);
-		border: 1px solid var(--line-2);
-		border-radius: 999px;
-		padding: 0.35rem 0.8rem;
-		box-shadow: var(--shadow-sm);
-	}
-
-	.dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: var(--grad);
-	}
-
 	h1 {
 		font-size: clamp(2.75rem, 1.9rem + 4.4vw, 4.75rem);
 		letter-spacing: -0.04em;
 		font-weight: 600;
-		margin: 1.35rem 0 1rem;
+		margin: 0 0 1rem;
 	}
 
 	.thesis {
@@ -267,44 +242,55 @@
 		text-wrap: pretty;
 	}
 
-	/* Project --------------------------------------------------------- */
+	/* Projects -------------------------------------------------------- */
+
+	.projects {
+		scroll-margin-top: 3.5rem;
+	}
+
+	.project-list {
+		display: grid;
+		gap: 1rem;
+	}
 
 	.project-card {
 		padding: 1.5rem 1.5rem 1.35rem;
 		display: grid;
-		gap: 1.35rem;
+		gap: 1rem;
+	}
+
+	.project-card .top {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
 	}
 
 	.project-card h3 {
-		font-size: clamp(1.125rem, 1rem + 0.7vw, 1.375rem);
+		font-size: clamp(1.0625rem, 1rem + 0.5vw, 1.25rem);
 	}
 
 	.project-card .prose {
-		margin-top: 0.6rem;
 		font-size: 0.9375rem;
 	}
 
-	.metrics {
-		list-style: none;
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 0.75rem;
-		margin: 0;
-		padding: 1.15rem 0;
-		border-block: 1px solid var(--line);
+	.status {
+		font-family: var(--mono);
+		font-size: var(--label);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		white-space: nowrap;
+		color: var(--ink-2);
+		background: var(--bg-3);
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		padding: 0.25rem 0.65rem;
 	}
 
-	.metrics .value {
-		display: block;
-		font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
-		font-weight: 600;
-		letter-spacing: -0.03em;
-		line-height: 1.1;
-	}
-
-	.metrics .metric-label {
-		font-size: 0.75rem;
-		color: var(--ink-3);
+	.status.live {
+		color: var(--accent-deep);
+		background: var(--grad-soft);
+		border-color: transparent;
 	}
 
 	.bottom {
@@ -358,10 +344,13 @@
 			border-left: none;
 			border-top: 1px solid var(--line);
 		}
+	}
 
-		.metrics {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 1.15rem 0.75rem;
+	@media (max-width: 34rem) {
+		.project-card .top {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
 		}
 	}
 
