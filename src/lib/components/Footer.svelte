@@ -37,7 +37,7 @@
 			<li><a href="/#projects">Projects</a></li>
 		</ul>
 
-		<p class="colophon">© {year} {site.name} · Built with SvelteKit</p>
+		<p class="colophon"> {site.name} · Software Developer</p>
 	</div>
 </footer>
 
