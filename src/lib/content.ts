@@ -1,3 +1,5 @@
+import discordAlerts from '$lib/assets/reverse-split-discord.png';
+
 export const site = {
 	name: 'Wesley Nguyen',
 	thesis: 'Software Developer',
@@ -72,6 +74,7 @@ export type Writeup = {
 	overview: string[];
 	stack: { name: string; why: string }[];
 	how: { title: string; detail: string }[];
+	image?: { src: string; alt: string; caption: string };
 	sources: { label: string; href: string; note: string }[];
 };
 
@@ -262,6 +265,12 @@ export const writeups: Record<string, Writeup> = {
 					'A confirmed decision flows through one code path that abstracts over multiple brokerage APIs, with per-broker quirks isolated behind a shared interface.'
 			}
 		],
+		image: {
+			src: discordAlerts,
+			alt: 'Two Discord alerts from the pipeline, each showing an upcoming reverse split with ticker, side, and quantity, followed by an Execute button',
+			caption:
+				'Alerts as they land in Discord: ticker, side, and quantity, one tap from execution.'
+		},
 		sources: [
 			{
 				label: 'Investor.gov: Reverse stock splits',

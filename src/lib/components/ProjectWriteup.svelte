@@ -76,6 +76,15 @@
 					</li>
 				{/each}
 			</ol>
+
+			{#if writeup.image}
+				<figure class="shot" use:reveal={80}>
+					<div class="shot-frame card">
+						<img src={writeup.image.src} alt={writeup.image.alt} loading="lazy" />
+					</div>
+					<figcaption>{writeup.image.caption}</figcaption>
+				</figure>
+			{/if}
 		</div>
 	</section>
 
@@ -228,6 +237,29 @@
 		margin-top: 0.5rem;
 		font-size: 0.875rem;
 		color: var(--ink-2);
+	}
+
+	.shot {
+		margin: 1.75rem 0 0;
+	}
+
+	.shot-frame {
+		max-width: 34rem;
+		overflow: hidden;
+		background: #1a1a1e;
+	}
+
+	.shot-frame img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.shot figcaption {
+		margin-top: 0.85rem;
+		font-size: 0.8125rem;
+		color: var(--ink-3);
+		max-width: 60ch;
 	}
 
 	.links {
