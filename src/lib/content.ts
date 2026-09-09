@@ -1,10 +1,10 @@
 export const site = {
 	name: 'Wesley Nguyen',
-	thesis: 'Continuously exploring and integrating new technologies and innovative solutions.',
+	thesis: 'Software Developer',
 
 	bio: [
-		"I taught myself to code during Covid by automating the tedious parts of my own life, then shipping small tools to friends who told me the moment anything broke. That loop of build, ship, listen, and fix is still how I work.",
-		"Now I build full-stack software professionally, where the code has to outlast my attention span and the problems rarely come with instructions. Learning fast is the skill that carries over. What I want next is scale: systems that hold up for years and reach enough people that the engineering decisions behind them matter."
+		"I build full-stack software professionally, where the code has to outlast my attention span and the problems rarely come with instructions. Learning fast is the skill that carries over.",
+		"I got here by teaching myself to code during Covid, automating the tedious parts of my own life and shipping small tools to friends who told me the moment anything broke. That loop of build, ship, listen, and fix is still how I work. What I want next is scale: systems that hold up for years and reach enough people that the engineering decisions behind them matter."
 	],
 
 	ledger: [
@@ -49,7 +49,7 @@ export const projects = [
 	{
 		name: 'Reverse Split Arbitrage Bot',
 		description:
-			'Reads new SEC reverse-split filings, flags the profitable ones, and executes trades across 50 brokerage accounts.',
+			'Ingests SEC reverse-split filings as they post, parses their legal terms with an LLM, and routes confirmed opportunities through a multi-broker execution layer.',
 		stack: ['Python', 'OpenAI API', 'REST APIs', 'Discord API', 'Git'],
 		status: 'Writeup',
 		href: '/project/reverse-split/'
@@ -57,7 +57,7 @@ export const projects = [
 	{
 		name: 'Federal Contract Opportunity Monitor',
 		description:
-			'Watches the federal contract feed hourly and alerts a small business only when a posting is worth bidding on. Costs $0 to run.',
+			'A $0-to-run job that checks the federal contract feed hourly and alerts only when a posting is genuinely new.',
 		stack: ['Python', 'GitHub Actions', 'REST APIs', 'CI/CD', 'Git'],
 		status: 'In-Progress',
 		href: '/project/contract-monitor/'
@@ -81,7 +81,7 @@ export const writeups: Record<string, Writeup> = {
 		eyebrow: 'In progress · Built for a friend',
 		name: 'Federal Contract Opportunity Monitor',
 		tagline:
-			'A scheduled job that checks the federal contract feed every hour and alerts only when a posting is genuinely new.',
+			'A $0-to-run scheduled job that checks the federal contract feed every hour and alerts only when a posting is genuinely new.',
 		overview: [
 			'A friend starting a small contracting business needed to see relevant federal postings the day they went up. The commercial tools that do this run $2,000 to $15,000 a year, so I built the free version: a Python job on GitHub Actions that checks the SAM.gov feed hourly and alerts only on postings worth a look.',
 			'The whole design follows from two constraints: a 1,000-request daily API limit, and no server or database to remember anything between runs.'
@@ -213,10 +213,10 @@ export const writeups: Record<string, Writeup> = {
 		eyebrow: 'Automation · Built with friends',
 		name: 'Reverse Split Arbitrage Bot',
 		tagline:
-			'A pipeline that reads new SEC reverse-split filings, classifies them with an LLM, and executes the profitable ones across 50 brokerage accounts.',
+			'A pipeline that ingests SEC reverse-split filings, classifies their fractional-share terms with an LLM, and cuts the time from filing to trade decision to minutes.',
 		overview: [
-			'When a company reverse splits, some brokerages round fractional shares up to a full share. Buy a few dollars of stock before the split and that fraction becomes a whole share after it; the difference is profit.',
-			'The edge is reading filings fast. The pipeline scrapes each new SEC reverse-split filing, uses the OpenAI API to classify its fractional-share terms, and posts confirmed round-ups to Discord for a one-tap buy-or-pass call. On a buy, it places the order across 50 brokerage accounts, because the strategy scales with accounts, not dollars.'
+			'When a company reverse splits, the treatment of fractional shares is spelled out in a filing, in legal language that varies by company and only matters for a short window before the split date. Reading those filings quickly and correctly is the entire problem.',
+			'The pipeline does the reading. It ingests each new SEC reverse-split filing as it posts, uses the OpenAI API to classify the fractional-share provision, and pushes qualified cases to Discord with everything needed for a fast decision. A single execution layer then orchestrates the order through multiple brokerage APIs, taking the time from filing to execution down to minutes.'
 		],
 		stack: [
 			{
@@ -229,7 +229,7 @@ export const writeups: Record<string, Writeup> = {
 			},
 			{
 				name: 'REST APIs',
-				why: 'Public brokerage APIs place the same order across all 50 accounts.'
+				why: 'One execution layer abstracts over multiple brokerage APIs, so a single decision becomes an order everywhere it needs to be.'
 			},
 			{
 				name: 'Discord API',
@@ -237,29 +237,29 @@ export const writeups: Record<string, Writeup> = {
 			},
 			{
 				name: 'Git',
-				why: 'Versioned config, so prompts and account lists change through commits.'
+				why: 'Versioned config, so prompts and broker integrations change through commits.'
 			}
 		],
 		how: [
 			{
-				title: 'Watch the filings',
+				title: 'Ingest the filings',
 				detail:
-					'A scraper polls new SEC reverse-split filings, so opportunities surface the day they post.'
+					'A scraper polls new SEC reverse-split filings, so each one surfaces the day it posts instead of after the window closes.'
 			},
 			{
-				title: 'Classify with an LLM',
+				title: 'Parse the legal language',
 				detail:
-					'Each filing reduces to one answer: will fractional shares round up? Only confirmed round-ups move forward.'
+					'The LLM reduces each filing to one classification of its fractional-share provision. The wording varies too much across companies for pattern matching.'
 			},
 			{
 				title: 'Decide in Discord',
 				detail:
-					'Confirmed cases post with ticker, ratio, and deadline. A human makes the final buy-or-pass call.'
+					'Qualified cases post with ticker, ratio, and deadline. A human makes the final call, keeping the pipeline from acting on a misread filing.'
 			},
 			{
-				title: 'Execute across 50 accounts',
+				title: 'Orchestrate the execution',
 				detail:
-					'On a buy, the order fans out through each brokerage API. Small profit per account, multiplied.'
+					'A confirmed decision flows through one code path that abstracts over multiple brokerage APIs, with per-broker quirks isolated behind a shared interface.'
 			}
 		],
 		sources: [

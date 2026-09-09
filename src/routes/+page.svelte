@@ -16,10 +16,10 @@
 		<h1 class="rise" style="--rise-delay: 60ms">{site.name}</h1>
 		<p class="thesis rise" style="--rise-delay: 140ms">{site.thesis}</p>
 		<div class="actions rise" style="--rise-delay: 220ms">
-			<a class="btn btn-primary" href="mailto:{site.links.email}">
-				Get in touch <span class="arrow" aria-hidden="true">→</span>
+			<a class="btn btn-primary" href="#projects">
+				See what I'm building <span class="arrow" aria-hidden="true">→</span>
 			</a>
-			<a class="btn btn-ghost" href="#projects">See what I'm building</a>
+			<a class="btn btn-ghost" href="mailto:{site.links.email}">Get in touch</a>
 		</div>
 	</div>
 </section>

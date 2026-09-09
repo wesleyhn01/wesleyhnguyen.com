@@ -110,6 +110,9 @@
 				</a>
 				<a class="btn btn-ghost" href="/#projects">All projects</a>
 			</div>
+			<p class="repo-note" use:reveal={120}>
+				The source for this project lives in a private repository and is available on request.
+			</p>
 		</div>
 	</section>
 </article>
@@ -292,6 +295,12 @@
 		flex-wrap: wrap;
 		gap: 0.75rem;
 		margin-top: 1.75rem;
+	}
+
+	.repo-note {
+		margin-top: 1.25rem;
+		font-size: 0.8125rem;
+		color: var(--ink-3);
 	}
 
 	@media (max-width: 52rem) {
