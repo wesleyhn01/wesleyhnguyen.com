@@ -3,8 +3,8 @@
 	import { site } from '$lib/content';
 
 	const pages = [
-		{ href: '/', label: 'Home', short: 'Home' },
-		{ href: '/#projects', label: 'Projects', short: 'Projects' }
+		{ href: '/', label: 'Home' },
+		{ href: '/#projects', label: 'Projects' }
 	];
 
 	const current = $derived(page.url.pathname);
@@ -29,17 +29,13 @@
 
 <nav aria-label="Primary" class:scrolled>
 	<div class="shell bar">
-		<a class="brand" href="/">
-			<span class="full">{site.name}</span>
-			<span class="short">{site.name.split(' ')[0]}</span>
-		</a>
+		<a class="brand" href="/">{site.name}</a>
 
 		<ul class="pages">
 			{#each pages as item (item.href)}
 				<li>
 					<a href={item.href} class:active={isActive(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
-						<span class="full">{item.label}</span>
-						<span class="short">{item.short}</span>
+						{item.label}
 					</a>
 				</li>
 			{/each}
@@ -200,17 +196,13 @@
 		top: 0.5rem;
 	}
 
-	.short {
-		display: none;
-	}
-
 	@media (max-width: 30rem) {
-		.full {
-			display: none;
+		.brand {
+			font-size: 0.875rem;
 		}
 
-		.short {
-			display: inline;
+		.pages li:first-child {
+			display: none;
 		}
 
 		.pages a {

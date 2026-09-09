@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>WN {page.status}</title>
+	<title>{page.status === 404 ? 'Page not found' : `Error ${page.status}`} — Wesley Nguyen</title>
 </svelte:head>
 
 <section>

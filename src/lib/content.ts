@@ -30,8 +30,8 @@ export const site = {
 	},
 
 	seo: {
-		homeTab: 'WN Home',
-		title: 'Wesley Nguyen, software developer',
+		homeTab: 'Wesley Nguyen — Software Developer',
+		title: 'Wesley Nguyen — Software Developer',
 		description:
 			'Wesley Nguyen is a software developer focused on leveraging emerging technologies to create innovative solutions.'
 	}
@@ -60,7 +60,7 @@ export const projects = [
 			'Watches the federal contract feed hourly and alerts a small business only when a posting is worth bidding on. Costs $0 to run.',
 		stack: ['Python', 'GitHub Actions', 'REST APIs', 'CI/CD', 'Git'],
 		status: 'In-Progress',
-		href: '/project/'
+		href: '/project/contract-monitor/'
 	}
 ];
 
@@ -77,7 +77,7 @@ export type Writeup = {
 
 export const writeups: Record<string, Writeup> = {
 	monitor: {
-		tab: 'WN Contract Monitor',
+		tab: 'Federal Contract Monitor — Wesley Nguyen',
 		eyebrow: 'In progress · Built for a friend',
 		name: 'Federal Contract Opportunity Monitor',
 		tagline:
@@ -136,7 +136,7 @@ export const writeups: Record<string, Writeup> = {
 	},
 
 	sast: {
-		tab: 'WN SAST Platform',
+		tab: 'SAST Vulnerability Platform — Wesley Nguyen',
 		eyebrow: 'Team of four · Backend architecture',
 		name: 'SAST Vulnerability Management Platform',
 		tagline:
@@ -209,7 +209,7 @@ export const writeups: Record<string, Writeup> = {
 	},
 
 	'reverse-split': {
-		tab: 'WN Arbitrage Bot',
+		tab: 'Reverse Split Arbitrage Bot — Wesley Nguyen',
 		eyebrow: 'Automation · Built with friends',
 		name: 'Reverse Split Arbitrage Bot',
 		tagline:
