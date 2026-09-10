@@ -101,19 +101,6 @@
 	</div>
 </section>
 
-<section class="fun">
-	<div class="shell">
-		<div class="fact" use:reveal>
-			<p class="eyebrow">Fun fact</p>
-			<p class="fact-line">
-				{site.funFact.lead}
-				<span class="grad-text">{site.funFact.emphasis}</span>
-				{site.funFact.tail}
-			</p>
-		</div>
-	</div>
-</section>
-
 <style>
 	/* Hero ------------------------------------------------------------ */
 
@@ -241,6 +228,7 @@
 
 	.projects {
 		scroll-margin-top: 3.5rem;
+		padding-bottom: calc(var(--step) * 1.2);
 	}
 
 	.project-list {
@@ -309,28 +297,6 @@
 		gap: 0.4rem;
 		margin: 0;
 		padding: 0;
-	}
-
-	/* Fun fact -------------------------------------------------------- */
-
-	.fun {
-		padding-bottom: calc(var(--step) * 1.2);
-	}
-
-	.fact {
-		border-radius: var(--r-lg);
-		padding: clamp(1.5rem, 4vw, 2.25rem);
-		background: var(--grad-soft), var(--bg-2);
-		border: 1px solid var(--line);
-	}
-
-	.fact-line {
-		margin-top: 0.75rem;
-		font-size: clamp(1.125rem, 1rem + 1.1vw, 1.6rem);
-		font-weight: 550;
-		line-height: 1.3;
-		letter-spacing: -0.025em;
-		max-width: 30ch;
 	}
 
 	/* Responsive ------------------------------------------------------ */

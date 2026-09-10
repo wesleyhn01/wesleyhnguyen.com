@@ -43,16 +43,14 @@ export const contractMonitor: Project = {
 				'Qualifying postings get a weighted 0-100 score across specificity, eligibility, and deadline, so the strongest lead is always on top.'
 		}
 	],
-	sources: [
-		{
-			label: 'SAM.gov Get Opportunities API',
-			href: 'https://open.gsa.gov/api/get-opportunities-public-api/',
-			note: 'The data source, including the daily request limit behind most of the design.'
-		},
-		{
-			label: 'SBA contracting assistance programs',
-			href: 'https://www.sba.gov/federal-contracting/contracting-assistance-programs',
-			note: 'The eligibility rules the scoring step weighs most heavily.'
-		}
+	tradeoffs: [
+		{ heading: 'A decision and what it cost', detail: 'TODO' },
+		{ heading: 'A failure mode I hit', detail: 'TODO' },
+		{ heading: 'What I would do differently', detail: 'TODO' },
+		{ heading: 'Where it breaks at ten times the scale', detail: 'TODO' }
+	],
+	references: [
+		{ label: 'SAM.gov Get Opportunities API', href: 'https://open.gsa.gov/api/get-opportunities-public-api/' },
+		{ label: 'SBA contracting assistance programs', href: 'https://www.sba.gov/federal-contracting/contracting-assistance-programs' }
 	]
 };

@@ -3,6 +3,7 @@
 	import type { Project } from '$lib/projects';
 	import { reveal } from '$lib/actions/reveal';
 	import Seo from '$lib/components/Seo.svelte';
+	import Tradeoffs from '$lib/components/Tradeoffs.svelte';
 
 	let { project }: { project: Project } = $props();
 </script>
@@ -85,25 +86,7 @@
 		</div>
 	</section>
 
-	<section class="context">
-		<div class="shell">
-			<div class="section-head" use:reveal>
-				<h2>Context</h2>
-				<span class="trailing">Background reading</span>
-			</div>
-
-			<ul class="links" use:reveal={80} role="list">
-				{#each project.sources as item (item.href)}
-					<li>
-						<a href={item.href} target="_blank" rel="noreferrer noopener">
-							<span class="label">{item.label}<span class="ext" aria-hidden="true">↗</span></span>
-							<span class="note">{item.note}</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	</section>
+	<Tradeoffs entries={project.tradeoffs} />
 
 	<section class="outro">
 		<div class="shell">
@@ -119,6 +102,19 @@
 			<p class="repo-note" use:reveal={120}>
 				The source for this project lives in a private repository and is available on request.
 			</p>
+
+			<div class="references" use:reveal={160}>
+				<p class="eyebrow">References</p>
+				<ul role="list">
+					{#each project.references as item (item.href)}
+						<li>
+							<a href={item.href} target="_blank" rel="noreferrer noopener">
+								{item.label}<span class="ext" aria-hidden="true">↗</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	</section>
 </article>
@@ -259,54 +255,6 @@
 		max-width: 60ch;
 	}
 
-	.links {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		border-top: 1px solid var(--line);
-	}
-
-	.links a {
-		display: grid;
-		gap: 0.3rem;
-		padding: 1.05rem 0.75rem 1.1rem;
-		margin-inline: -0.75rem;
-		border-bottom: 1px solid var(--line);
-		border-radius: var(--r-sm);
-		text-decoration: none;
-		transition: background-color 200ms var(--ease);
-	}
-
-	.links a:hover {
-		background: var(--bg-2);
-	}
-
-	.links .label {
-		font-size: 0.9375rem;
-		font-weight: 500;
-		color: var(--ink);
-	}
-
-	.links .ext {
-		display: inline-block;
-		margin-left: 0.45rem;
-		font-size: 0.75rem;
-		color: var(--ink-3);
-		transition: transform 200ms var(--ease);
-	}
-
-	.links a:hover .ext {
-		transform: translate(2px, -2px);
-		color: var(--accent-deep);
-	}
-
-	.links .note {
-		margin: 0;
-		max-width: 72ch;
-		font-size: 0.8125rem;
-		color: var(--ink-2);
-	}
-
 	.outro {
 		padding-bottom: calc(var(--step) * 1.2);
 	}
@@ -330,6 +278,45 @@
 		margin-top: 1.25rem;
 		font-size: 0.8125rem;
 		color: var(--ink-3);
+	}
+
+	.references {
+		margin-top: 2.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--line);
+	}
+
+	.references ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1.5rem;
+		margin: 0.6rem 0 0;
+		padding: 0;
+	}
+
+	.references a {
+		font-size: 0.8125rem;
+		color: var(--ink-2);
+		text-decoration: none;
+		transition: color 200ms var(--ease);
+	}
+
+	.references a:hover {
+		color: var(--accent-deep);
+	}
+
+	.references .ext {
+		display: inline-block;
+		margin-left: 0.3rem;
+		font-size: 0.7rem;
+		color: var(--ink-3);
+		transition: transform 200ms var(--ease);
+	}
+
+	.references a:hover .ext {
+		transform: translate(2px, -2px);
+		color: var(--accent-deep);
 	}
 
 	@media (max-width: 52rem) {

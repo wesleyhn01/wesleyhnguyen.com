@@ -59,21 +59,15 @@ export const reverseSplit: Project = {
 		caption:
 			'Alerts as they land in Discord: ticker, side, and quantity, one tap from execution.'
 	},
-	sources: [
-		{
-			label: 'Investor.gov: Reverse stock splits',
-			href: 'https://www.investor.gov/introduction-investing/investing-basics/glossary/reverse-stock-splits',
-			note: 'The SEC explainer on what a reverse split is and why companies do them.'
-		},
-		{
-			label: 'SEC EDGAR full-text search',
-			href: 'https://www.sec.gov/edgar/search/',
-			note: 'Where the filings come from.'
-		},
-		{
-			label: 'FINRA: Stock splits explained',
-			href: 'https://www.finra.org/investors/insights/stock-splits',
-			note: 'How fractional shares are handled after consolidation.'
-		}
+	tradeoffs: [
+		{ heading: 'A decision and what it cost', detail: 'TODO' },
+		{ heading: 'A failure mode I hit', detail: 'TODO' },
+		{ heading: 'What I would do differently', detail: 'TODO' },
+		{ heading: 'Where it breaks at ten times the scale', detail: 'TODO' }
+	],
+	references: [
+		{ label: 'Investor.gov: Reverse stock splits', href: 'https://www.investor.gov/introduction-investing/investing-basics/glossary/reverse-stock-splits' },
+		{ label: 'SEC EDGAR full-text search', href: 'https://www.sec.gov/edgar/search/' },
+		{ label: 'FINRA: Stock splits explained', href: 'https://www.finra.org/investors/insights/stock-splits' }
 	]
 };

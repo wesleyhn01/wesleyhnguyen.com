@@ -18,12 +18,6 @@ export const site = {
 
 	goal: 'Transform the Contract Monitor from a script into a scalable application.',
 
-	funFact: {
-		lead: "When I'm not working or learning something new, I'm practicing",
-		emphasis: 'Muay Thai,',
-		tail: 'which keeps me sharp mentally as much as physically.'
-	},
-
 	links: {
 		github: 'https://github.com/wesleyhn01',
 		linkedin: 'https://www.linkedin.com/in/wesleynguyen/',

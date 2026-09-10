@@ -1,5 +1,12 @@
 export type ProjectStatus = 'Shipped' | 'In progress' | 'Archived';
 
+export type Tradeoff = { heading: string; detail: string };
+
+export type Tradeoffs =
+	| [Tradeoff, Tradeoff]
+	| [Tradeoff, Tradeoff, Tradeoff]
+	| [Tradeoff, Tradeoff, Tradeoff, Tradeoff];
+
 export type Project = {
 	slug: string;
 	name: string;
@@ -11,5 +18,6 @@ export type Project = {
 	stack: { name: string; why: string }[];
 	how: { title: string; detail: string }[];
 	image?: { src: string; alt: string; caption: string };
-	sources: { label: string; href: string; note: string }[];
+	tradeoffs: Tradeoffs;
+	references: { label: string; href: string }[];
 };

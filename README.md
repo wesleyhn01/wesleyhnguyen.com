@@ -16,7 +16,8 @@ slashed form.
 Home page copy lives in `src/lib/content.ts`. Each project has one data file in
 `src/lib/projects/`, typed as `Project` in `src/lib/projects/types.ts`, and both the home page card
 and the project page read from that file, so the two cannot disagree. The `status` field accepts
-only `Shipped`, `In progress`, or `Archived`; any other value fails `npm run check`.
+only `Shipped`, `In progress`, or `Archived`, and `tradeoffs` accepts two to four entries; any
+other value fails `npm run check`.
 
 Adding a project means creating its data file, adding it to the ordered list in
 `src/lib/projects/index.ts`, and creating a route under `src/routes/project/<slug>/` that passes

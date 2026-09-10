@@ -150,13 +150,6 @@ section {
 	font-weight: 550;
 }
 
-.grad-text {
-	background: var(--grad);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-}
-
 /* Short strings (numbers) need a tighter ramp, or they read as one flat hue. */
 .grad-num {
 	background: linear-gradient(120deg, #2563eb, #4f46e5);

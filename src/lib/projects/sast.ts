@@ -56,21 +56,15 @@ export const sast: Project = {
 				'Every triage decision and status change is recorded, which is what compliance reviews ask for.'
 		}
 	],
-	sources: [
-		{
-			label: 'OWASP: Source Code Analysis Tools',
-			href: 'https://owasp.org/www-community/Source_Code_Analysis_Tools',
-			note: 'What static analysis can catch, including the false-positive problem this project is built around.'
-		},
-		{
-			label: 'GitHub: About secret scanning',
-			href: 'https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning',
-			note: 'Why scanning full git history matters, not just the latest commit.'
-		},
-		{
-			label: 'OWASP Dependency-Check',
-			href: 'https://owasp.org/www-project-dependency-check/',
-			note: 'The reference approach to matching dependencies against known CVEs.'
-		}
+	tradeoffs: [
+		{ heading: 'A decision and what it cost', detail: 'TODO' },
+		{ heading: 'A failure mode I hit', detail: 'TODO' },
+		{ heading: 'What I would do differently', detail: 'TODO' },
+		{ heading: 'Where it breaks at ten times the scale', detail: 'TODO' }
+	],
+	references: [
+		{ label: 'OWASP: Source Code Analysis Tools', href: 'https://owasp.org/www-community/Source_Code_Analysis_Tools' },
+		{ label: 'GitHub: About secret scanning', href: 'https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning' },
+		{ label: 'OWASP Dependency-Check', href: 'https://owasp.org/www-project-dependency-check/' }
 	]
 };
