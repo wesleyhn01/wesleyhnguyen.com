@@ -13,10 +13,14 @@ slashed form.
 
 ## Structure
 
-All site copy lives in `src/lib/content.ts`: the home page content, the project cards, and the
-project writeups. Each writeup shares one shape (overview, technologies, how it works, sources)
-rendered by `src/lib/components/ProjectWriteup.svelte`, so adding a project page means adding an
-entry to `writeups` and a thin route that passes it in.
+Home page copy lives in `src/lib/content.ts`. Each project has one data file in
+`src/lib/projects/`, typed as `Project` in `src/lib/projects/types.ts`, and both the home page card
+and the project page read from that file, so the two cannot disagree. The `status` field accepts
+only `Shipped`, `In progress`, or `Archived`; any other value fails `npm run check`.
+
+Adding a project means creating its data file, adding it to the ordered list in
+`src/lib/projects/index.ts`, and creating a route under `src/routes/project/<slug>/` that passes
+the project into `src/lib/components/ProjectWriteup.svelte`.
 
 Every page renders its head tags through `src/lib/components/Seo.svelte`. It takes a title and
 description, defaults the share image to `static/og.png`, and derives the canonical URL and

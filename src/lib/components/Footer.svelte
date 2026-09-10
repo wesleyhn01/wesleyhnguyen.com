@@ -42,7 +42,7 @@
 			<li><a href="/#projects">Projects</a></li>
 		</ul>
 
-		<p class="colophon"> {site.name} · Software Developer</p>
+		<p class="colophon">© {year} {site.name} | {site.thesis}</p>
 	</div>
 </footer>
 

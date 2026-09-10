@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectWriteup from '$lib/components/ProjectWriteup.svelte';
-	import { writeups } from '$lib/content';
+	import { contractMonitor } from '$lib/projects/contract-monitor';
 </script>
 
-<ProjectWriteup writeup={writeups.monitor} />
+<ProjectWriteup project={contractMonitor} />

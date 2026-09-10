@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { site, projects } from '$lib/content';
+	import { site } from '$lib/content';
+	import { projects, projectHref } from '$lib/projects';
 	import { reveal } from '$lib/actions/reveal';
 	import Seo from '$lib/components/Seo.svelte';
 </script>
@@ -73,21 +74,21 @@
 		</div>
 
 		<div class="project-list">
-			{#each projects as item, index (item.name)}
-				<a class="card project-card lift" href={item.href} use:reveal={80 + index * 60}>
+			{#each projects as project, index (project.slug)}
+				<a class="card project-card lift" href={projectHref(project)} use:reveal={80 + index * 60}>
 					<div class="top">
-						<h3>{item.name}</h3>
-						<span class="status" class:live={item.status.toLowerCase() === 'in-progress'}>
-							{item.status}
+						<h3>{project.name}</h3>
+						<span class="status" class:live={project.status === 'In progress'}>
+							{project.status}
 						</span>
 					</div>
 
-					<p class="prose">{item.description}</p>
+					<p class="prose">{project.tagline}</p>
 
 					<div class="bottom">
 						<ul class="stack" role="list">
-							{#each item.stack as tech (tech)}
-								<li class="chip">{tech}</li>
+							{#each project.stack as tech (tech.name)}
+								<li class="chip">{tech.name}</li>
 							{/each}
 						</ul>
 						<span class="link">

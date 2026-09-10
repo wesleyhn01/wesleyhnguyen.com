@@ -1,23 +1,24 @@
 <script lang="ts">
-	import { site, type Writeup } from '$lib/content';
+	import { site } from '$lib/content';
+	import type { Project } from '$lib/projects';
 	import { reveal } from '$lib/actions/reveal';
 	import Seo from '$lib/components/Seo.svelte';
 
-	let { writeup }: { writeup: Writeup } = $props();
+	let { project }: { project: Project } = $props();
 </script>
 
-<Seo title={writeup.tab} description={writeup.tagline} />
+<Seo title="{project.shortName} | {site.name}" description={project.tagline} />
 
 <article>
 	<section class="masthead">
 		<div class="glow" aria-hidden="true"></div>
 		<div class="shell">
-			<p class="eyebrow rise" style="--rise-delay: 60ms">{writeup.eyebrow}</p>
-			<h1 class="rise" style="--rise-delay: 140ms">{writeup.name}</h1>
-			<p class="tagline rise" style="--rise-delay: 220ms">{writeup.tagline}</p>
+			<p class="eyebrow rise" style="--rise-delay: 60ms">{project.status} · {project.eyebrow}</p>
+			<h1 class="rise" style="--rise-delay: 140ms">{project.name}</h1>
+			<p class="tagline rise" style="--rise-delay: 220ms">{project.tagline}</p>
 
 			<ul class="stack rise" style="--rise-delay: 300ms" role="list">
-				{#each writeup.stack as tech (tech.name)}
+				{#each project.stack as tech (tech.name)}
 					<li class="chip">{tech.name}</li>
 				{/each}
 			</ul>
@@ -32,7 +33,7 @@
 			</div>
 
 			<div class="prose lead" use:reveal={80}>
-				{#each writeup.overview as paragraph (paragraph)}
+				{#each project.overview as paragraph (paragraph)}
 					<p>{paragraph}</p>
 				{/each}
 			</div>
@@ -47,7 +48,7 @@
 			</div>
 
 			<dl class="tech-list card" use:reveal={80}>
-				{#each writeup.stack as tech (tech.name)}
+				{#each project.stack as tech (tech.name)}
 					<div class="row">
 						<dt>{tech.name}</dt>
 						<dd>{tech.why}</dd>
@@ -64,7 +65,7 @@
 			</div>
 
 			<ol class="steps" role="list">
-				{#each writeup.how as step, i (step.title)}
+				{#each project.how as step, i (step.title)}
 					<li class="card lift" use:reveal={i * 70}>
 						<span class="num">{String(i + 1).padStart(2, '0')}</span>
 						<h3>{step.title}</h3>
@@ -73,12 +74,12 @@
 				{/each}
 			</ol>
 
-			{#if writeup.image}
+			{#if project.image}
 				<figure class="shot" use:reveal={80}>
 					<div class="shot-frame card">
-						<img src={writeup.image.src} alt={writeup.image.alt} loading="lazy" />
+						<img src={project.image.src} alt={project.image.alt} loading="lazy" />
 					</div>
-					<figcaption>{writeup.image.caption}</figcaption>
+					<figcaption>{project.image.caption}</figcaption>
 				</figure>
 			{/if}
 		</div>
@@ -92,7 +93,7 @@
 			</div>
 
 			<ul class="links" use:reveal={80} role="list">
-				{#each writeup.sources as item (item.href)}
+				{#each project.sources as item (item.href)}
 					<li>
 						<a href={item.href} target="_blank" rel="noreferrer noopener">
 							<span class="label">{item.label}<span class="ext" aria-hidden="true">↗</span></span>

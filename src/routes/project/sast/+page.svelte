@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectWriteup from '$lib/components/ProjectWriteup.svelte';
-	import { writeups } from '$lib/content';
+	import { sast } from '$lib/projects/sast';
 </script>
 
-<ProjectWriteup writeup={writeups.sast} />
+<ProjectWriteup project={sast} />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectWriteup from '$lib/components/ProjectWriteup.svelte';
-	import { writeups } from '$lib/content';
+	import { reverseSplit } from '$lib/projects/reverse-split';
 </script>
 
-<ProjectWriteup writeup={writeups['reverse-split']} />
+<ProjectWriteup project={reverseSplit} />
