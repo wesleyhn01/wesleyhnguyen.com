@@ -85,7 +85,7 @@
 					<p class="prose">{item.description}</p>
 
 					<div class="bottom">
-						<ul class="stack">
+						<ul class="stack" role="list">
 							{#each item.stack as tech (tech)}
 								<li class="chip">{tech}</li>
 							{/each}

@@ -24,14 +24,19 @@
 			<p class="eyebrow">Get in touch</p>
 			<div class="address-row">
 				<a class="address" href="mailto:{site.links.email}">{site.links.email}</a>
-				<button class="copy" type="button" onclick={copyEmail}>
+				<button
+					class="copy"
+					type="button"
+					onclick={copyEmail}
+					aria-label={copied ? 'Copied email address' : 'Copy email address'}
+				>
 					{copied ? 'Copied' : 'Copy'}
 				</button>
 			</div>
 			<p class="sr-only" aria-live="polite">{copied ? 'Email address copied' : ''}</p>
 		</div>
 
-		<ul class="links">
+		<ul class="links" role="list">
 			<li><a href={site.links.linkedin} target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
 			<li><a href={site.links.github} target="_blank" rel="noreferrer noopener">GitHub</a></li>
 			<li><a href="/#projects">Projects</a></li>

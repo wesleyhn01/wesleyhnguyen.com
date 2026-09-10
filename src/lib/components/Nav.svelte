@@ -31,7 +31,7 @@
 	<div class="shell bar">
 		<a class="brand" href="/">{site.name}</a>
 
-		<ul class="pages">
+		<ul class="pages" role="list">
 			{#each pages as item (item.href)}
 				<li>
 					<a href={item.href} class:active={isActive(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
@@ -41,7 +41,7 @@
 			{/each}
 		</ul>
 
-		<ul class="socials">
+		<ul class="socials" role="list">
 			<li>
 				<a href={site.links.linkedin} target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
 					<svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">

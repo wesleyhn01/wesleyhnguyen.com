@@ -16,7 +16,7 @@
 			<h1 class="rise" style="--rise-delay: 140ms">{writeup.name}</h1>
 			<p class="tagline rise" style="--rise-delay: 220ms">{writeup.tagline}</p>
 
-			<ul class="stack rise" style="--rise-delay: 300ms">
+			<ul class="stack rise" style="--rise-delay: 300ms" role="list">
 				{#each writeup.stack as tech (tech.name)}
 					<li class="chip">{tech.name}</li>
 				{/each}
@@ -63,7 +63,7 @@
 				<h2>How it works</h2>
 			</div>
 
-			<ol class="steps">
+			<ol class="steps" role="list">
 				{#each writeup.how as step, i (step.title)}
 					<li class="card lift" use:reveal={i * 70}>
 						<span class="num">{String(i + 1).padStart(2, '0')}</span>
@@ -91,7 +91,7 @@
 				<span class="trailing">Background reading</span>
 			</div>
 
-			<ul class="links" use:reveal={80}>
+			<ul class="links" use:reveal={80} role="list">
 				{#each writeup.sources as item (item.href)}
 					<li>
 						<a href={item.href} target="_blank" rel="noreferrer noopener">
@@ -219,7 +219,7 @@
 		font-size: 0.75rem;
 		font-weight: 600;
 		margin-bottom: 0.7rem;
-		background: linear-gradient(120deg, #3b82f6, #6366f1);
+		background: linear-gradient(120deg, #2563eb, #4f46e5);
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;

@@ -84,6 +84,10 @@ a {
 	border-radius: 4px;
 }
 
+#main:focus {
+	outline: none;
+}
+
 ::selection {
 	background: rgba(59, 130, 246, 0.16);
 }
@@ -155,7 +159,7 @@ section {
 
 /* Short strings (numbers) need a tighter ramp, or they read as one flat hue. */
 .grad-num {
-	background: linear-gradient(120deg, #3b82f6, #6366f1);
+	background: linear-gradient(120deg, #2563eb, #4f46e5);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
