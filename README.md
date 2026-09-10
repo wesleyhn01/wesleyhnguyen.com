@@ -2,10 +2,14 @@
 
 Personal portfolio site built with SvelteKit and prerendered to static files.
 
-- `/` — bio, current focus, and project index
-- `/project/` — Federal Contract Opportunity Monitor
-- `/project/sast/` — SAST Vulnerability Management Platform
-- `/project/reverse-split/` — Reverse Split Arbitrage Bot
+- `/`: bio, current focus, and project index
+- `/project/contract-monitor/`: Federal Contract Opportunity Monitor
+- `/project/sast/`: SAST Vulnerability Management Platform
+- `/project/reverse-split/`: Reverse Split Arbitrage Bot
+- `/project/`: permanent redirect to `/project/contract-monitor/`
+
+Every URL ends in a trailing slash. Requests without one receive a permanent redirect to the
+slashed form.
 
 ## Structure
 
@@ -13,6 +17,11 @@ All site copy lives in `src/lib/content.ts`: the home page content, the project 
 project writeups. Each writeup shares one shape (overview, technologies, how it works, sources)
 rendered by `src/lib/components/ProjectWriteup.svelte`, so adding a project page means adding an
 entry to `writeups` and a thin route that passes it in.
+
+Every page renders its head tags through `src/lib/components/Seo.svelte`. It takes a title and
+description, defaults the share image to `static/og.png`, and derives the canonical URL and
+`og:url` from the current path. Page titles follow the pattern `Page Name | Wesley Nguyen`, and
+the `og:title` always matches the title.
 
 ## Development
 

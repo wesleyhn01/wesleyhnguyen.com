@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { site, type Writeup } from '$lib/content';
 	import { reveal } from '$lib/actions/reveal';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let { writeup }: { writeup: Writeup } = $props();
 </script>
 
-<svelte:head>
-	<title>{writeup.tab}</title>
-	<meta name="description" content={writeup.tagline} />
-	<meta property="og:title" content="{writeup.name}, by {site.name}" />
-	<meta property="og:description" content={writeup.tagline} />
-</svelte:head>
+<Seo title={writeup.tab} description={writeup.tagline} />
 
 <article>
 	<section class="masthead">

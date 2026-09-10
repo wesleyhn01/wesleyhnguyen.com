@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { site } from '$lib/content';
+	import Seo from '$lib/components/Seo.svelte';
+
+	const heading = $derived(page.status === 404 ? 'Page not found' : `Error ${page.status}`);
+	const message = $derived(page.error?.message ?? 'The page you asked for is not here.');
 </script>
 
-<svelte:head>
-	<title>{page.status === 404 ? 'Page not found' : `Error ${page.status}`} — Wesley Nguyen</title>
-</svelte:head>
+<Seo title="{heading} | {site.name}" description={message} noindex />
 
 <section>
 	<div class="shell">
 		<p class="eyebrow">Error {page.status}</p>
 		<h1>Nothing at this address.</h1>
-		<p class="prose">{page.error?.message ?? 'The page you asked for is not here.'}</p>
+		<p class="prose">{message}</p>
 		<div class="actions">
 			<a class="btn btn-primary" href="/">
 				Back home <span class="arrow" aria-hidden="true">→</span>

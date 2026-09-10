@@ -3,6 +3,7 @@ import discordAlerts from '$lib/assets/reverse-split-discord.png';
 export const site = {
 	name: 'Wesley Nguyen',
 	thesis: 'Software Developer',
+	url: 'https://wesleyhnguyen.com',
 
 	bio: [
 		"I build software professionally, where the code has to outlast my attention span and the problems rarely come with instructions. Learning fast is the skill that carries over.",
@@ -32,8 +33,7 @@ export const site = {
 	},
 
 	seo: {
-		homeTab: 'Wesley Nguyen — Software Developer',
-		title: 'Wesley Nguyen — Software Developer',
+		title: 'Wesley Nguyen | Software Developer',
 		description:
 			'Wesley Nguyen is a software developer focused on leveraging emerging technologies to create innovative solutions.'
 	}
@@ -80,7 +80,7 @@ export type Writeup = {
 
 export const writeups: Record<string, Writeup> = {
 	monitor: {
-		tab: 'Federal Contract Monitor — Wesley Nguyen',
+		tab: 'Federal Contract Monitor | Wesley Nguyen',
 		eyebrow: 'In progress · Built for a friend',
 		name: 'Federal Contract Opportunity Monitor',
 		tagline:
@@ -139,7 +139,7 @@ export const writeups: Record<string, Writeup> = {
 	},
 
 	sast: {
-		tab: 'SAST Vulnerability Platform — Wesley Nguyen',
+		tab: 'SAST Vulnerability Platform | Wesley Nguyen',
 		eyebrow: 'Team of four · Backend architecture',
 		name: 'SAST Vulnerability Management Platform',
 		tagline:
@@ -212,7 +212,7 @@ export const writeups: Record<string, Writeup> = {
 	},
 
 	'reverse-split': {
-		tab: 'Reverse Split Arbitrage Bot — Wesley Nguyen',
+		tab: 'Reverse Split Arbitrage Bot | Wesley Nguyen',
 		eyebrow: 'Automation · Built with friends',
 		name: 'Reverse Split Arbitrage Bot',
 		tagline:

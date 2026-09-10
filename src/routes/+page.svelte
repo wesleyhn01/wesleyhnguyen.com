@@ -1,14 +1,10 @@
 <script lang="ts">
 	import { site, projects } from '$lib/content';
 	import { reveal } from '$lib/actions/reveal';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>{site.seo.homeTab}</title>
-	<meta name="description" content={site.seo.description} />
-	<meta property="og:title" content={site.seo.title} />
-	<meta property="og:description" content={site.seo.description} />
-</svelte:head>
+<Seo title={site.seo.title} description={site.seo.description} />
 
 <section class="hero">
 	<div class="glow" aria-hidden="true"></div>
