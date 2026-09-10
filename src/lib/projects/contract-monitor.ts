@@ -5,7 +5,6 @@ export const contractMonitor: Project = {
 	name: 'Federal Contract Opportunity Monitor',
 	shortName: 'Federal Contract Monitor',
 	status: 'In progress',
-	eyebrow: 'Built for a friend',
 	tagline:
 		'A $0-to-run scheduled job that checks the federal contract feed every hour and alerts only on postings it has not seen before.',
 	overview: [
@@ -30,7 +29,7 @@ export const contractMonitor: Project = {
 		{
 			title: 'Filter in cost order',
 			detail:
-				'Free checks run first: query constraints, keyword gating, then deduplication. Only records that survive all three cost an API request, which cuts calls about 90 percent.'
+				'Free checks run first: query constraints, keyword gating, then deduplication. Only records that survive all three cost an API request, which cuts calls about 90%.'
 		},
 		{
 			title: 'Remember without a database',
@@ -40,14 +39,8 @@ export const contractMonitor: Project = {
 		{
 			title: 'Rank, not just match',
 			detail:
-				'Qualifying postings get a weighted 0-100 score across specificity, eligibility, and deadline, so the strongest lead is always on top.'
+				'Qualifying postings get a weighted 0–100 score across specificity, eligibility, and deadline, so the strongest lead is always on top.'
 		}
-	],
-	tradeoffs: [
-		{ heading: 'A decision and what it cost', detail: 'TODO' },
-		{ heading: 'A failure mode I hit', detail: 'TODO' },
-		{ heading: 'What I would do differently', detail: 'TODO' },
-		{ heading: 'Where it breaks at ten times the scale', detail: 'TODO' }
 	],
 	references: [
 		{ label: 'SAM.gov Get Opportunities API', href: 'https://open.gsa.gov/api/get-opportunities-public-api/' },

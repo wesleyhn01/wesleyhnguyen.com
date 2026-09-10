@@ -46,26 +46,6 @@
 	</div>
 </section>
 
-<section class="now">
-	<div class="shell">
-		<div class="section-head" use:reveal>
-			<h2>Now</h2>
-			<span class="trailing">Updated as it changes</span>
-		</div>
-
-		<div class="card now-card lift" use:reveal={80}>
-			<div class="cell">
-				<p class="eyebrow">Currently learning</p>
-				<p class="line">{site.learning}</p>
-			</div>
-			<div class="cell">
-				<p class="eyebrow">Working toward</p>
-				<p class="line">{site.goal}</p>
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="projects" id="projects">
 	<div class="shell">
 		<div class="section-head" use:reveal>
@@ -97,6 +77,26 @@
 					</div>
 				</a>
 			{/each}
+		</div>
+	</div>
+</section>
+
+<section class="now">
+	<div class="shell">
+		<div class="section-head" use:reveal>
+			<h2>Now</h2>
+			<span class="trailing">Updated as it changes</span>
+		</div>
+
+		<div class="card now-card lift" use:reveal={80}>
+			<div class="cell">
+				<p class="eyebrow">Currently learning</p>
+				<p class="line">{site.learning}</p>
+			</div>
+			<div class="cell">
+				<p class="eyebrow">Working toward</p>
+				<p class="line">{site.goal}</p>
+			</div>
 		</div>
 	</div>
 </section>
@@ -190,6 +190,10 @@
 
 	/* Now ------------------------------------------------------------- */
 
+	.now {
+		padding-bottom: calc(var(--step) * 1.2);
+	}
+
 	.now-card {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -228,7 +232,6 @@
 
 	.projects {
 		scroll-margin-top: 3.5rem;
-		padding-bottom: calc(var(--step) * 1.2);
 	}
 
 	.project-list {

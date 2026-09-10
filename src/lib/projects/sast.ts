@@ -7,10 +7,10 @@ export const sast: Project = {
 	status: 'Shipped',
 	eyebrow: 'Team of four · Backend architecture',
 	tagline:
-		'A security platform that scans repositories for leaked secrets, insecure code, and vulnerable dependencies, with LLM triage that cut false-positive review volume 40 percent.',
+		'A security platform that scans repositories for leaked secrets, insecure code, and vulnerable dependencies, with LLM triage that cut false-positive review volume 40%.',
 	overview: [
 		'Security scanners bury the one real leak under hundreds of false positives, so teams learn to ignore them. I led backend architecture on a four-person team building a platform that treats triage as the product.',
-		'It runs secrets detection, static analysis, and dependency scanning in one containerized CI/CD pipeline, then has an LLM review each finding in context before a human sees it. In pre-release evaluation, that cut false-positive review volume by 40 percent.'
+		'It runs secrets detection, static analysis, and dependency scanning in one containerized CI/CD pipeline, then has an LLM review each finding in context before a human sees it. In pre-release evaluation, that cut false-positive review volume by 40%.'
 	],
 	stack: [
 		{
@@ -55,12 +55,6 @@ export const sast: Project = {
 			detail:
 				'Every triage decision and status change is recorded, which is what compliance reviews ask for.'
 		}
-	],
-	tradeoffs: [
-		{ heading: 'A decision and what it cost', detail: 'TODO' },
-		{ heading: 'A failure mode I hit', detail: 'TODO' },
-		{ heading: 'What I would do differently', detail: 'TODO' },
-		{ heading: 'Where it breaks at ten times the scale', detail: 'TODO' }
 	],
 	references: [
 		{ label: 'OWASP: Source Code Analysis Tools', href: 'https://owasp.org/www-community/Source_Code_Analysis_Tools' },

@@ -4,7 +4,7 @@ export const site = {
 	url: 'https://wesleyhnguyen.com',
 
 	bio: [
-		"I build software professionally, where the code has to outlast my attention span and the problems rarely come with instructions. Learning fast is the skill that carries over.",
+		"I build software professionally, on problems that rarely come with instructions.",
 		"I got here by teaching myself to code during Covid, automating the tedious parts of my own life and shipping small tools to friends who told me the moment anything broke. That loop of build, ship, listen, and fix is still how I work. What I want next is scale: systems that hold up for years and reach enough people that the engineering decisions behind them matter."
 	],
 

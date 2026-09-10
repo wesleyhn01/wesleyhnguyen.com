@@ -3,7 +3,6 @@
 	import type { Project } from '$lib/projects';
 	import { reveal } from '$lib/actions/reveal';
 	import Seo from '$lib/components/Seo.svelte';
-	import Tradeoffs from '$lib/components/Tradeoffs.svelte';
 
 	let { project }: { project: Project } = $props();
 </script>
@@ -14,7 +13,9 @@
 	<section class="masthead">
 		<div class="glow" aria-hidden="true"></div>
 		<div class="shell">
-			<p class="eyebrow rise" style="--rise-delay: 60ms">{project.status} · {project.eyebrow}</p>
+			<p class="eyebrow rise" style="--rise-delay: 60ms">
+				{project.eyebrow ? `${project.status} · ${project.eyebrow}` : project.status}
+			</p>
 			<h1 class="rise" style="--rise-delay: 140ms">{project.name}</h1>
 			<p class="tagline rise" style="--rise-delay: 220ms">{project.tagline}</p>
 
@@ -78,15 +79,19 @@
 			{#if project.image}
 				<figure class="shot" use:reveal={80}>
 					<div class="shot-frame card">
-						<img src={project.image.src} alt={project.image.alt} loading="lazy" />
+						<img
+							src={project.image.src}
+							width={project.image.width}
+							height={project.image.height}
+							alt={project.image.alt}
+							loading="lazy"
+						/>
 					</div>
 					<figcaption>{project.image.caption}</figcaption>
 				</figure>
 			{/if}
 		</div>
 	</section>
-
-	<Tradeoffs entries={project.tradeoffs} />
 
 	<section class="outro">
 		<div class="shell">
